@@ -3,7 +3,7 @@ import {message} from 'ant-design-vue';
 
 export function instance(data){ 
     const instance = axios.create({
-        baseURL:'http://localhost:3000',
+        baseURL:'https://cloud-music-api-4i46k3zxk-fysoul-music.vercel.app',
         timeout:5000
     })
 
