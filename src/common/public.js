@@ -69,13 +69,23 @@ export function throttle(fn,delay){
 }
 
 
-//(前后)不重复的随机函数
-export function random(start=0,end,number){
-
+//不重复的随机函数
+export function random(start=0,end,number){//number上一个不重复的数字
   //限制不超过10位数
   let ran=parseInt(Math.random()*(end-start+1)+start,10);
   if(typeof number=='number'&&ran==number){
     return random(start,end,ran)
   }
   return ran
+}
+
+
+//图片加载完在执行函数
+export function imgload(src,callback){
+
+    let img = new Image();
+      img.src =src;
+      img.onload=()=>{
+      typeof callback==='function'?callback():callback       
+      }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+    <title>测试页面</title>
+    <style>
+        html{
+            /* background: red; */
+            
+        }
+        body,html{
+          height: 100%;
+          width: 100%;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script>
+
+    var img = new Image();
+      img.src ='../src/assets/img/backimg/back12.jpg'
+      img.onload=()=>{
+        document.body.style.background='url('+img.src+') 0 0/100% 100%'
+      }
+    </script>
+  </body>
+</html>

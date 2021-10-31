@@ -15,9 +15,10 @@ html,body{
     
 }
 body{
-    background: url(../img/backimg/back12.jpg) 0 0/100% 100%;
+    /* background: url(../img/backimg/back12.jpg) 0 0/100% 100%; */
     perspective:1000px;
     color: white;
+    
     
     -moz-backface-visibility: visible;
 }
