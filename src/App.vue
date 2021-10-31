@@ -82,7 +82,11 @@ export default {
      PlayBox,
      LuoPan,
      Card
-  },  
+  },
+
+  created() {
+   
+  },
 }
 </script>
 
@@ -121,8 +125,6 @@ export default {
        height: calc(100% - 180rem);
        margin:0rem 200rem 0rem;
        background: rgba(0, 0, 0,.4);
-       /* transform: translateX(100%); */
-       /* overflow-y: auto; */
     }
 
     .tabBox{

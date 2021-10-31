@@ -67,3 +67,15 @@ export function throttle(fn,delay){
       }
   }
 }
+
+
+//(前后)不重复的随机函数
+export function random(start=0,end,number){
+
+  //限制不超过10位数
+  let ran=parseInt(Math.random()*(end-start+1)+start,10);
+  if(typeof number=='number'&&ran==number){
+    return random(start,end,ran)
+  }
+  return ran
+}

@@ -9,7 +9,7 @@
 
 <script>
 import screenfull from 'screenfull'
-
+import {random} from 'common/public'
 export default {
   name: 'TopBarRight',
   data () {
@@ -18,10 +18,10 @@ export default {
         isflag:false,
         imgArr:[
           require('assets/img/backimg/back1.jpg'),
-          require('assets/img/backimg/back2.jpg'),
+          // require('assets/img/backimg/back2.jpg'),
           require('assets/img/backimg/back3.jpg'),
           // require('assets/img/backimg/back4.jpg'),
-          // require('assets/img/backimg/back5.jpg'),
+          require('assets/img/backimg/back5.jpg'),
           require('assets/img/backimg/back6.jpg'),
           require('assets/img/backimg/back7.jpg'),
           require('assets/img/backimg/back8.jpg'),
@@ -32,8 +32,8 @@ export default {
           require('assets/img/backimg/back13.jpg'),
           require('assets/img/backimg/back14.jpg'),
           ],
-
-          isActive:false
+          isActive:false,
+          ran:7,//back12.jpg图片
     };
   },
   methods: {
@@ -65,21 +65,18 @@ export default {
 
       //换肤
       change(){
-         let radom=Math.floor(Math.random()*this.imgArr.length)
+        
+         let number=random(null,this.imgArr.length-1,this.ran)
          let img = new Image();
-         img.src = this.imgArr[radom];
+         img.src = this.imgArr[number];
          img.onload=()=>{
-            document.body.style.background='url('+img.src+') 0 0/100% 100%'
+              document.body.style.background='url('+this.imgArr[number]+') 0 0/100% 100%'
+              this.ran=number
+            
          }
-         
 
       }
 },
-
-  components: {
-
-    },
-
     mounted(){
 
        window.onresize = () => {
