@@ -1,7 +1,7 @@
 <template>
   <div class="Title">
     <div class="content" :style="obj1">
-        <div class="text" v-for="(item,index) in text" :key="index"
+        <div class="text" v-for="(item,index) in text" :key="index" ref="test"
           @click="check(index)">
                
                
@@ -66,10 +66,11 @@ export default {
   },
   methods: {
        check(index){
+        
           this.isNumber=index
-          this.$emit('getNumber',index)
+         
 
-          let el=document.querySelectorAll('.text')
+          let el=this.$refs.test
           for(let i=0;i<el.length;i++){
             el[i].style.borderColor='rgba(230, 230, 230,.5)'
           }
@@ -79,7 +80,7 @@ export default {
           el[index].style.borderColor='white'
 
 
-         
+           this.$emit('getNumber',index)
        },
 
        
@@ -93,7 +94,7 @@ export default {
     },
 
     mounted(){
-       this.check(this.isNumber)
+          this.check(this.isNumber) 
     }
 }
 </script>

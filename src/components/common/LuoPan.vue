@@ -10,7 +10,7 @@
           >{{item}}</div>
       </div>
 
-       <!-- 分钟 237.6px-->
+       <!-- 分钟-->
        <div class="minutes" :style="{transform:'rotate('+degm+'deg)', transition:'all '+number+'s'}" :class="{activem:isActive}">
            <div class="mi" v-for="(item,index) in minute" :key="index" 
           
@@ -109,11 +109,13 @@ export default {
         getDate(time=new Date()){
            let year=['零','一','二','三','四','五','六','七','八','九','十','十一','十二']
            let date=['十','一','二','三','四','五','六','七','八','九','']
+           let str='十'
            let arr=time.getFullYear().toString().split('')
             let slice=time.getDate().toString().split('')
+            if(slice[slice.length-1]==0||slice.length==1)str=''
             slice.push(10)
             this.title=year[arr[0]]+year[arr[1]]+year[arr[2]]+year[arr[3]]+'年'
-                    +year[time.getMonth()+1]+'月'+date[slice[0]]+date[slice[1]]+'日'
+                    +year[time.getMonth()+1]+'月'+date[slice[0]]+str+date[slice[1]]+'日'
 
         },
 
