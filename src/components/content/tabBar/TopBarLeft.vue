@@ -1,12 +1,12 @@
 <template>
-  <div class="TopBarLeft" @click="eventAgent"  ref="box" :style="newHight">
+  <div class="TopBarLeft" @click="eventAgent"   ref="box" :style="newHight">
      <input class="in" type="text" @keydown="keys"
      v-model="parameter.name" ref="text" :placeholder="content" 
-     @focus.stop="deletHolder" @input="search" />
+     @focus.stop="deletHolder" @input="search" @blur="deletevalue"/>
 
      <i class="icon-search iconfont icon" @click.stop="searchMusic(-1)"></i>
      <div class="fuzzy" v-for="(item,index) in fuzzy.songs" :class='{active:index==isIndex}' :key="index"
-     @mouseenter="getIndex(index)">
+     @mouseenter="getIndex(index)" >
         {{item.name}}
      </div>
      
@@ -41,16 +41,22 @@ export default {
          this.search()
       },
 
-      
+      deletevalue(){//失去焦点事件会比点击事件的eventAgent先执行
+            setTimeout(()=>{
+              this.fuzzy={songs:[],albums:[]}
+            },200)
+      },
       
       eventAgent(e){
-          if(e.target.className=='fuzzy active'){
-               this.fuzzy={songs:[],albums:[]}
+            if(e.target.className=='fuzzy active'){
+              
                let name=e.target.innerText
                if(name)this.parameter.name=name
                this.searchMusic(-1)
                
-          }
+                
+            }
+
       },
 
 
@@ -203,6 +209,7 @@ export default {
                              obj.author+=element.name+fu
                         });
                         this.fuzzy.songs.length!=0?this.fuzzy.songs.splice(index,1,obj):this.fuzzy.songs.push(obj)
+                        
                     });
                     
                     //有时候会没有专辑,填充一个长度为2的数组
@@ -231,12 +238,6 @@ export default {
      
   },
   mounted() {
-       document.body.onclick=(e)=>{
-           if(e.target.className=='in'){
-               return
-           }
-            this.fuzzy={songs:[],albums:[]}
-       }
        this.$bus.$on('pageIndex',(res)=>{
            this.searchMusic(res-1)
        })

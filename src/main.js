@@ -29,7 +29,10 @@ message.config({
 });
 
 function load(){
-  document.body.style.background='url('+SRC+') 0 0/100% 100%'
+
+  let w=document.documentElement.clientWidth
+  w=w<=800?'800px auto':'100% 100%'
+  document.body.style.background='url('+SRC+') 0 0/'+w
   new Vue({
     render: h => h(App),
     router,

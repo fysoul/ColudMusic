@@ -62,9 +62,10 @@ export default {
   methods: {
        sendObj(obj,index,e){//发送一个对象   
           if(e.target.className=='sing'||e.target.className=='sing font'||e.target.className=='fl'||e.target.className=='contr'){
-             if(this.playIndex==index)return
+            //  if(this.playIndex==index)return是否为点击的是上一次的
+            //  this.playIndex=index
               this.$bus.$emit('changeIndex',obj,index)
-              this.playIndex=index
+              
           }
        },
 

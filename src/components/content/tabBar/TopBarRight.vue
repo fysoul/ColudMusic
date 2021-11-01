@@ -70,10 +70,11 @@ export default {
          let img = new Image();
          img.src = this.imgArr[number];
          img.onload=()=>{
-           
-              document.body.style.background='url('+this.imgArr[number]+') 0 0/100% 100%'
+              let w=document.documentElement.clientWidth
+              w=w<=800?'800px auto':'100% 100%'
+              document.body.style.background='url('+this.imgArr[number]+') 0 0/'+w
               this.ran=number
-              setTimeout(toggle,0)            
+              setTimeout(toggle,0)             
          }
 
       }

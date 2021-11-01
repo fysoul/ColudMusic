@@ -95,6 +95,8 @@ export default {
 
         arr:[],//接收页面传来的数组
         isActive:false,//用于搜索页面的初始动画
+
+        playloding:null,//开始播放提示
     };
   },
     components: {
@@ -108,18 +110,7 @@ export default {
         
     },
 
-    getMusicObj(obj){
-         this.$refs.listen.pause()
-         this.img=obj.img
-         this.name=obj.name+'  一 '+obj.artists
-         this.lrc=obj.lrc
-         this.time=this.getTime(obj.duration)
-         this.id=obj.id
-         this.sing=obj
-         
-         this.isflag=true
-         this.$refs.listen.play()
-    },
+   
 
     //上一曲方法
     before(res){
@@ -174,11 +165,30 @@ export default {
                 
         },
 
+      getMusicObj(obj){
+         this.$refs.listen.pause()
+         this.img=obj.img
+         this.name=obj.name+'  一 '+obj.artists
+         this.lrc=obj.lrc
+         this.time=this.getTime(obj.duration)
+         this.id=obj.id
+         this.sing=obj
+         
+         this.isflag=true
+         
+         setTimeout(this.playloding, 0);
+
+         this.$refs.listen.play()
+         
+      },
+
         hasLrc(obj,number){
              //初始化
                 this.lrcText=''
                 this.arrIndex=0
                 this.lrcArr.length=0
+
+                this.playloding=this.$message.loading('获取资源中...',0)
 
                 lrc(obj.id).then(res=>{
                     obj.lrc=res.lrc.lyric
