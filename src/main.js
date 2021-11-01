@@ -37,4 +37,7 @@ function load(){
   }).$mount('#app')
 }
 
+
+
 imgload(SRC,load)
+

@@ -65,14 +65,15 @@ export default {
 
       //换肤
       change(){
-        
+        let toggle=this.$message.loading('切换背景中...',0)
          let number=random(null,this.imgArr.length-1,this.ran)
          let img = new Image();
          img.src = this.imgArr[number];
          img.onload=()=>{
+           
               document.body.style.background='url('+this.imgArr[number]+') 0 0/100% 100%'
               this.ran=number
-            
+              setTimeout(toggle,0)            
          }
 
       }
@@ -92,12 +93,6 @@ export default {
   },
 
   created() {
-    //  document.body.style.background='url('+this.imgArr[radom]+') 0 0/100% 100%'
-     
-    //  window.onload=()=>{
-    //     this.change()
-    //  }
-      
      //用于搜索页面的开场动画
       this.$bus.$on('active',res=>{
         setTimeout(()=>{
@@ -112,6 +107,7 @@ export default {
 </script>
 
 <style  scoped>
+
     .TopBarRight{
         width: 100%;
         height: 100%;

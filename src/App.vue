@@ -84,16 +84,10 @@ export default {
      Card
   },
 
-  created() {
-   
-  },
 }
 </script>
 
 <style>
-
-
-
 /* 全局样式 */
     .main{
        width: 100%;

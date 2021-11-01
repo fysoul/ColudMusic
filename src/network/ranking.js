@@ -3,6 +3,7 @@ import {instance} from './request'
 export function rank(){
     return instance({
         url:'toplist',
+        realIP:'116.25.146.177'
     }).then(res=>{
         let arr=[]
         let reg=/俄|vip|乡村|法国|摇滚|民谣|南语/ig

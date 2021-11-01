@@ -9,6 +9,7 @@ export function instance(data){
 
     // axios.interceptors是全局拦截
     instance.interceptors.request.use(config=>{
+        console.log('config全局拦截',config)
         return config
     })
 

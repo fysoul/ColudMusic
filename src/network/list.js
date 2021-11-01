@@ -101,7 +101,8 @@ export function getIds(id){
     return instance({
         url:'playlist/detail',
         params:{
-            id
+            id,
+            realIP:'116.25.146.177'
         }
     }).then(res=>{
         let arr=res.playlist.trackIds.length

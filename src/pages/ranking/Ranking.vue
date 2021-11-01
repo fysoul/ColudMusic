@@ -152,7 +152,7 @@ export default {
     setTimeout(this.time,0)
   },
 
-
+ 
  async created() {
    this.time=this.$message.loading('数据加载中...',0)
      let  getArr=await rank()

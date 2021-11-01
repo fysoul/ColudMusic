@@ -15,7 +15,6 @@ html,body{
     
 }
 body{
-    /* background: url(../img/backimg/back12.jpg) 0 0/100% 100%; */
     perspective:1000px;
     color: white;
     
@@ -24,13 +23,8 @@ body{
 }
 
 @media screen and (max-width:800px) {
-    body{
-        /* width:800px; */
-        background-size: 800px auto;
-    }
     .main{
         width: 1280px;
-        /* background:red; */
     }
 }
 

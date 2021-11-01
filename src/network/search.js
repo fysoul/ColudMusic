@@ -29,7 +29,8 @@ export function msg(ids){
     return instance({
         url:'song/detail',//详情搜索
         params:{
-            ids
+            ids,
+            realIP:'116.25.146.177'
         }
     })
 }

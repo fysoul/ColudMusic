@@ -8,6 +8,8 @@ function resolve(dir){
 
 module.exports={
 
+    
+
     devServer: {
         // host: '127.0.0.1',
         // port: 8084,
@@ -32,6 +34,13 @@ module.exports={
         .set('components',resolve('./src/components'))
         .set('network',resolve('./src/network'))
         .set('pages',resolve('./src/pages'))
+
+         //配置图片base64编码
+        config.module
+          .rule('images')
+          .use('url-loader')
+          .loader('url-loader')
+          .tap(options => Object.assign(options, { limit: 10240 }))
 
     },
 

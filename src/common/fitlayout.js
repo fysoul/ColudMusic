@@ -23,9 +23,15 @@ import {debounce} from './public'
       const CVW=1280 
 
       let w=docEl.clientWidth
-      w=w<=800?800:w
+      if(w<=800){
+        document.body.style.backgroundSize='800px auto'
+        w=800
+      }else{
+        document.body.style.backgroundSize='100% 100%'
+      }
       var rem = w / CVW //最小宽度800
       docEl.style.fontSize = rem + 'px'
+      
     }
   
     setRemUnit()
