@@ -4,6 +4,7 @@ import {message} from 'ant-design-vue';
 export function instance(data){ 
     const instance = axios.create({
         baseURL:'https://cloud-music-api-two.vercel.app',
+        // https://cloud-music-api-two.vercel.app
         timeout:5000
     })
 
@@ -14,7 +15,7 @@ export function instance(data){
     })
 
     instance.interceptors.response.use(res=>{
-        console.log('数据回来了')
+        console.log('数据回来了未处理数据',res)
             return res.data.result||res.data.songs||res.data
             
     },err=>{

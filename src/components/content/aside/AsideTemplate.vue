@@ -1,8 +1,10 @@
 <template>
   <div class="AsideTemplate" :class="{active:isSelect}" @click="togglePage" :style="getActiveColor" ref="size">
+      <div class="line" :class="{lineActive:isactive}"></div>
       <div class="icons"><slot name="icons"></slot></div>
       <div class="content" ref="test"><slot name="content"></slot></div>
   </div>
+  
 </template>
 
 <script>
@@ -18,14 +20,12 @@ export default {
   data () {
     return {
         colorObj:{},
-        size:'15%',
         loading:0,
         isSelect:false
     };
   },
   methods: {
        async togglePage(){
-        //  this.$bus.$emit('active',true)
         await this.$router.push(this.path).catch(err=>err);
          this.isSelect=true
          setTimeout(()=>{
@@ -33,11 +33,6 @@ export default {
            
          },100)
       },
-
-      change(){
-          let rem=window.getComputedStyle(this.$refs.size).width||this.$refs.size.style.width
-          this.size=(parseFloat(rem)/3).toFixed(2)+'rem'
-      }
   },
   computed:{
      isactive(){
@@ -45,30 +40,19 @@ export default {
      },
       getActiveColor(){
         let obj={}
-        obj.height=this.size
-        if(this.isactive){   
+        if(this.isactive){
+
               obj.background=this.activeColor
-              obj.border='1rem solid rgba(255,255,255,.5)'
+              
               obj.color='rgba(48,72,98,1)'
               return obj
+          }else{
+ 
           }
          
           return obj
 
       }
-  },
-
-  mounted(){
-       
-       this.change()
-    window.onresize=()=>{
-        this.change()
-    }
-
-     this.$nextTick(()=>{
-         this.change()
-      })
-
   },
   
 }
@@ -77,8 +61,24 @@ export default {
 <style  scoped>
 
 @import '~assets/css/variable.css';
+.line{
+  transition: all 500ms;
+  width:0;
+  height: 2rem;
+   background: white;
+}
+
+.lineActive{
+  width: 100%;
+  height: 2rem;
+   background: rgba(48,72,98,1);
+}
+
+
+
 .AsideTemplate{
-    width: 80%;
+    width: 160rem;
+    height: 50rem;
     margin: 0rem auto 10rem auto;
     padding: 5rem 10rem;
     display: flex;
@@ -93,10 +93,13 @@ export default {
    transform: translate3d(-25rem,0rem,-50rem);
 }
 
+.AsideTemplate:hover .line{
+  width: 100%;
+}
+
 .AsideTemplate:hover{
     cursor: pointer;
     background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(48,72,98,.3));
-     box-shadow: 0 0 2rem 1rem white;
 }
 
 .content{

@@ -1,12 +1,9 @@
 <template>
   <div class="PlayLeft" ref="playleft" >
     <FullPlay v-if="isfull"/>
-    <img v-if="img" :src="img" :style="{width:playh+'rem',height:playh+'rem'}" @click="full">
-    <div class="icon-dd iconfont loading" v-else
-     :style="{width:playh+'rem',height:playh+'rem',fontSize:playh/2+'rem'}"
-     @click="full"></div>
-
-    <div class="boxContr" :style="{left:(playh+10)+'rem'}">
+    <img v-if="img" :src="img" @click="full">
+    <div class="icon-dd iconfont loading" v-else @click="full"></div>
+    <div class="boxContr">
         <div class="middle">
             <span class="lry">{{name}}</span>
             <div class="time contr">
@@ -40,15 +37,10 @@ export default {
   name: 'PlayLeft',
   data () {
     return {
-       playh:100,
        isfull:false
     };
   },
   props:{
-    // sing:{
-    //    type:String,
-
-    // },
     img:{
       type:String,
       default:''
@@ -83,10 +75,6 @@ export default {
        PlayLine,
        FullPlay
     },
-    mounted(){
-        let h=parseFloat(window.getComputedStyle(this.$refs.playleft).height).toFixed(2)
-        this.playh=h-10
-    }
 }
 </script>
 
@@ -100,9 +88,11 @@ export default {
 }
 
 .boxContr{
+    height: 90rem;
     position: absolute;
     top: 5rem;
     right: 5rem;
+    left: 100rem;
     bottom: 5rem;
     margin: auto;
 }
@@ -117,10 +107,8 @@ export default {
 
 
 .line{
-
   width: 100%;
   height: 10rem;
-
 }
 
 .lineBox{
@@ -145,6 +133,8 @@ export default {
 
 
 .loading,img{
+  height: 90rem;
+  width: 90rem;
   position: absolute;
    vertical-align: middle;
    border-radius: 5rem;

@@ -6,18 +6,13 @@
          <PlayLine :disable="false" linekey="mute" :fuzzy='fuzzy' insideColor="rgb(200,200,200)"  outsideColor="red"></PlayLine>
       </div>
       <span class="iconfont icon-lrc" :class="{active:islrc}"
-       :style="getObj" title="开启歌词" @click="sendLrc"></span>
-
+        title="开启歌词" @click="sendLrc"></span>
       <span class="iconfont" 
       :class="{'icon-sj':number==2,'icon-singloop':number==1,'icon-singsloop':number==0}" 
-      :style="getObj" 
       :title="number==0?'列表播放':number==1?'单曲循环':'随机播放'"
        @click="sendState"></span>
-
-<!-- :class="{'icon-addlike':!islike,'icon-xh2':islike} color:islike?'red':''-->
       <span class="iconfont icon-addlike" 
-        
-        :style="{fontSize:(this.font/1.5)+'rem',width:this.font+'rem',height:this.font+'rem'}" 
+         
         title="添加歌曲到" @click="addLike"></span>
   </div>
 </template>
@@ -30,7 +25,6 @@ export default {
   inject: ['singObj'],
   data () {
     return {
-        font:'16rem',
         fuzzy:0.5,
         number:this.stateNumber,
         islrc:this.lrc,
@@ -61,31 +55,11 @@ export default {
          },
 
          addLike(){
-          //  this.islike=!this.islike
            this.$bus.$emit('addLike',true,this.singObj.sing)
          }
     },
   components: {
        PlayLine
-    },
-    mounted(){
-          //  ||this.$refs.font.style.height
-            // window.onload=()=>{//其他地方调用了load,就不起作用
-                  this.font=parseFloat(window.getComputedStyle(this.$refs.font).height).toFixed(2)
-            // }
-           
-    },
-    computed:{
-      getObj(){
-        
-        return {fontSize:(this.font/1.5)+'rem',width:this.font+'rem',height:this.font+'rem'}
-      }
-
-     
-    },
-
-    created() {
-     
     },
 }
 </script>
@@ -104,13 +78,16 @@ export default {
    height: 20%;
    margin-right:5rem;
 }
-span{
+ .PlayLeftContr span{
+   width: 30rem;
+   height: 30rem;
   display: flex;
   max-width: 15%;
   align-items: center;
   justify-content: center;
   max-height: 100%;
   text-align: center;
+  font-size: 20rem;
 }
 
 .active{

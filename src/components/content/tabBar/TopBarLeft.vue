@@ -37,24 +37,18 @@ export default {
   methods: {
 
       deletHolder(){
-         if(!this.$refs.text.value)return
-         this.search()
+       this.$refs.box.style.height=(this.fuzzy.songs.length+this.fuzzy.albums.length+1)*this.boxw+'rem'
       },
 
       deletevalue(){//失去焦点事件会比点击事件的eventAgent先执行
-            setTimeout(()=>{
-              this.fuzzy={songs:[],albums:[]}
-            },200)
+            this.$refs.box.style.height='40rem'
       },
       
       eventAgent(e){
             if(e.target.className=='fuzzy active'){
-              
                let name=e.target.innerText
                if(name)this.parameter.name=name
-               this.searchMusic(-1)
-               
-                
+               this.searchMusic(-1)   
             }
 
       },
