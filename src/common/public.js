@@ -81,11 +81,39 @@ export function random(start=0,end,number){//number上一个不重复的数字
 
 
 //图片加载完在执行函数
-export function imgload(src,callback){
+export function imgload(src,callback){//src可以为数组
+  
+  
+  if(src.length){
+    let len=src.length
+    let arr=[]
+    let promiseAll=[]
+    
+    for(let i=0;i<len;i++){
+      promiseAll[i]=new Promise((reslove,reject)=>{
+        arr[i]=new Image();
+        arr[i].src=src[i]
+        arr[i].onload=()=>{
+          reslove(arr[i])
+        }
+      })
+    }
 
+    Promise.all(promiseAll).then(img=>{
+      console.log('图片数组被执行',img)
+      callback()
+    })
+  }else if(typeof src=='string'){
+       
     let img = new Image();
       img.src =src;
       img.onload=()=>{
       typeof callback==='function'?callback():callback       
-      }
+    }
+
+  }
+
+
+
+    
 }
