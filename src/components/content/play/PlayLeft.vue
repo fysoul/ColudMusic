@@ -13,7 +13,7 @@
 
         <div class="lineBox" >
             <div class="line">
-              <PlayLine insideColor='rgb(200,200,200)'  outsideColor="red" linekey="box" :percent='0'></PlayLine>
+              <PlayLine insideColor='rgb(200,200,200)'  outsideColor="rgba(255,0,0,1)" linekey="box" :percent='0'></PlayLine>
             </div>
         </div>
         

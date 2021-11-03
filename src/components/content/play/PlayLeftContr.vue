@@ -90,6 +90,10 @@ export default {
   font-size: 20rem;
 }
 
+ .PlayLeftContr span:nth-child(3){
+   font-size: 22rem;
+ }
+
 .active{
   color: red;
 }

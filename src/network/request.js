@@ -3,19 +3,17 @@ import {message} from 'ant-design-vue';
 
 export function instance(data){ 
     const instance = axios.create({
-        baseURL:'https://cloud-music-api-two.vercel.app',
+        baseURL:'https://163.lpddr5.cn',//其它人的https://autumnfish.cn
         // https://cloud-music-api-two.vercel.app
         timeout:5000
     })
 
     // axios.interceptors是全局拦截
     instance.interceptors.request.use(config=>{
-        console.log('config全局拦截',config)
         return config
     })
 
     instance.interceptors.response.use(res=>{
-        console.log('数据回来了未处理数据',res)
             return res.data.result||res.data.songs||res.data
             
     },err=>{
