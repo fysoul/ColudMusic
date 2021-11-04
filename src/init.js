@@ -16,18 +16,30 @@ function loading(){
 
 export default async function createMount(call){
     let time=Date.now()
+     
+    // document.querySelector('.cloak').style.fontSize='0px'
+    
     let data=await rank()//排行榜标题
     store.dispatch('rankTitle',data)
     let ids=await getIds(data[0].id)
     let string=ids.join(',')
-    Promise.all([recommended(),msg(string),imgload(netImg,loading)]).then(res=>{
+    Promise.all([recommended(),msg(string),imgload(netImg,null)]).then(res=>{
       
     store.dispatch('listTitle',res[0])//热门推荐
     store.dispatch('rankSings',res[1])//排行榜默认第一个歌单歌曲
-      clearInterval(document.querySelector('.cloak').dataTime)
-      document.body.removeChild(document.querySelector('.cloak'))
-      typeof call=='function'?call():call
+      
+    
+    document.querySelector('.cloak').style.opacity=0
+    clearInterval(document.querySelector('.cloak').dataTime)
+    document.body.removeChild(document.querySelector('.cloak'))
+    loading()
+    typeof call=='function'?call():call
+
+    
+
+     
       console.log('初次请求数据花的时间',Date.now()-time)
+
     })
 }
   
