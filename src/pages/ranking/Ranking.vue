@@ -154,15 +154,24 @@ export default {
 
  
  async created() {
-   this.time=this.$message.loading('数据加载中...',0)
-     let  getArr=await rank()
-     this.dataArr=getArr
-     let  ids=await getIds(getArr[this.number].id)
-     let  string=ids.join(',')
-     let  music=await msg(string)
+       
+     //从store中取出
+     this.dataArr=this.$store.state.rank
+     this.getmusic(this.$store.state.rankSings,this.number)
+
+
+    //  this.time=this.$message.loading('数据加载中...',0)
+    //  let  getArr=await rank()
+    //  this.dataArr=getArr
+    //  let  ids=await getIds(getArr[this.number].id)
+    //  let  string=ids.join(',')
+    //  let  music=await msg(string)
+    //  this.getmusic(music,this.number)
+    //  setTimeout(this.time,0)
+
      
-     this.getmusic(music,this.number)
-     setTimeout(this.time,0)
+
+
   },
 
 } 

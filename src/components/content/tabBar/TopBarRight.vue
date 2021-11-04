@@ -16,34 +16,15 @@ export default {
     return {
         isFullscreen:false,
         isflag:false,
-        imgArr:[
-          require('assets/img/backimg/back1.jpg'),
-          // require('assets/img/backimg/back2.jpg'),
-          require('assets/img/backimg/back3.jpg'),
-          // require('assets/img/backimg/back4.jpg'),
-          require('assets/img/backimg/back5.jpg'),
-          require('assets/img/backimg/back6.jpg'),
-          require('assets/img/backimg/back7.jpg'),
-          require('assets/img/backimg/back8.jpg'),
-          // require('assets/img/backimg/back9.jpg'),
-          require('assets/img/backimg/back10.jpg'),
-          // require('assets/img/backimg/back11.jpg'),
-          require('assets/img/backimg/back12.jpg'),
-          require('assets/img/backimg/back13.jpg'),
-          require('assets/img/backimg/back14.jpg'),
-          ],
+          netImg:this.$store.state.netImg,//从store获取图片
           isActive:false,
-          ran:7,//back12.jpg图片
+          ran:7,
     };
   },
   methods: {
 
     clickFullscreen(){
       if (!screenfull.enabled) {
-//           this.$message({
-//             message: '浏览器不支持',
-//             type: 'warning'
-//           })
           return false
         }
         screenfull.toggle();
@@ -66,15 +47,30 @@ export default {
       //换肤
       change(){
         let toggle=this.$message.loading('切换背景中...',0)
-         let number=random(null,this.imgArr.length-1,this.ran)
+         let number=random(null,this.netImg.length-1,this.ran)
          let img = new Image();
-         img.src = this.imgArr[number];
+         img.src = this.netImg[number];
+
+         let w=document.documentElement.clientWidth
+          w=w<=800?'800px auto':'100% 100%'
+
+         
+
+         //成功加载的时间
          img.onload=()=>{
-              let w=document.documentElement.clientWidth
+             let w=document.documentElement.clientWidth
               w=w<=800?'800px auto':'100% 100%'
-              document.body.style.background='url('+this.imgArr[number]+') 0 0/'+w
+              document.body.style.background='url('+this.netImg[number]+') 0 0/'+w
               this.ran=number
-              setTimeout(toggle,0)             
+              setTimeout(toggle,0)    
+         }
+         
+         //加载失败
+         img.onerror=()=>{
+           this.$message.warning('休息一下再来',1)
+              document.body.style.background='url('+this.netImg[7]+') 0 0/'+w
+              this.ran=7
+              setTimeout(toggle,0)       
          }
 
       }

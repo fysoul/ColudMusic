@@ -1,7 +1,8 @@
 <template>
 <!-- 该div会替换ID为app的div -->
 <div class="main">
-     <div class="tabBox">
+   <template>
+          <div class="tabBox">
         <TabBar></TabBar>
      </div>
    
@@ -28,9 +29,6 @@
            <i class="iconfont icon-gd" slot="icons"></i>
            <span slot="content">歌单</span>
         </AsideTemplate>
-
-        
- 
         <AsideTemplate path='/like'>
            <i class="iconfont icon-like" slot="icons" ></i>
            <span slot="content">列表</span>
@@ -44,19 +42,16 @@
         <AsideTemplate path='/down'>
            <i class="iconfont icon-xz" slot="icons" ></i>
            <span slot="content">下载</span>
-        </AsideTemplate>
-
-       
-
-        
+        </AsideTemplate>    
    </AsideBox>
 
+   <div class="tabBox">
+      <PlayBox></PlayBox>
+   </div>
+   <Card/>
+</template>
 
-<div class="tabBox">
-   <PlayBox></PlayBox>
-</div>
-  
- <Card/>
+    
 
 </div>
    
@@ -66,24 +61,25 @@
 
 import AsideBox from 'components/content/aside/AsideBox'
 import AsideTemplate from 'components/content/aside/AsideTemplate'
-
 import TabBar from 'components/content/tabBar/TabBar'
 import PlayBox from 'components/content/play/PlayBox'//播放组件
 import LuoPan from 'components/common/LuoPan'
-
 import Card from 'components/common/toast/Card.vue'
-
 export default {
   name: 'App',
+
+   data(){
+     return {
+     }
+  },
   components: {
      AsideBox,
      AsideTemplate,
      TabBar,
      PlayBox,
      LuoPan,
-     Card
+     Card,
   },
-
 }
 </script>
 
@@ -92,10 +88,7 @@ export default {
     .main{
        width: 100%;
        height: 100%;
-       /* clear: both; */
     }
-
-   
    .clear::after{
       content: '';
       display: block;

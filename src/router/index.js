@@ -107,7 +107,7 @@ router.beforeEach((to,from,next)=>{
         return
     }
     if(to.name==from.name)return
-  msg=message.loading('正在加载...',0) 
+    if(to.name!=='search')msg=message.loading('正在加载...',0) 
   next()
 })
 

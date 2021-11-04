@@ -196,14 +196,20 @@ export default {
             return
           }   
           let time=this.$message.loading('正在搜索数据',0)
-          let data;
-            try {
-              data=await recommended()
-            } catch (error) {
-               setTimeout(time,0)
-            }
 
-          //对数据的再加工
+
+          // let data;//请求获取
+          //   try {
+          //     data=await recommended()
+          //   } catch (error) {
+          //      setTimeout(time,0)
+          //   }
+          
+        
+        //从store中获取
+        let data=this.$store.state.listSings
+
+        //对数据的再加工
        let arr=[]
        arr.push(data.music)
        data.music=arr

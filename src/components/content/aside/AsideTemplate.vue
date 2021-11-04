@@ -1,5 +1,5 @@
 <template>
-  <div class="AsideTemplate" :class="{active:isSelect}" @click="togglePage" :style="getActiveColor" ref="size">
+  <div class="AsideTemplate" @click="togglePage" :style="getActiveColor" ref="size">
       <div class="line" :class="{lineActive:isactive}"></div>
       <div class="icons"><slot name="icons"></slot></div>
       <div class="content" ref="test"><slot name="content"></slot></div>
@@ -27,11 +27,6 @@ export default {
   methods: {
        async togglePage(){
         await this.$router.push(this.path).catch(err=>err);
-         this.isSelect=true
-         setTimeout(()=>{
-           this.isSelect=false
-           
-         },100)
       },
   },
   computed:{
@@ -88,9 +83,6 @@ export default {
     background: transparent;
     transition: transform 500ms linear;
    
-}
-.active{
-   transform: translate3d(-25rem,0rem,-50rem);
 }
 
 .AsideTemplate:hover .line{

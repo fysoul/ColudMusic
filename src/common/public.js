@@ -84,7 +84,7 @@ export function random(start=0,end,number){//number上一个不重复的数字
 export function imgload(src,callback){//src可以为数组
   
   
-  if(src.length){
+    if(!src.length)return
     let len=src.length
     let arr=[]
     let promiseAll=[]
@@ -96,24 +96,17 @@ export function imgload(src,callback){//src可以为数组
         arr[i].onload=()=>{
           reslove(arr[i])
         }
+        arr[i].onerror=()=>{
+          reslove(-1)
+        }
       })
     }
 
-    Promise.all(promiseAll).then(img=>{
-      console.log('图片数组被执行',img)
-      callback()
-    })
-  }else if(typeof src=='string'){
-       
-    let img = new Image();
-      img.src =src;
-      img.onload=()=>{
-      typeof callback==='function'?callback():callback       
-    }
+      return Promise.all(promiseAll).then(img=>{
+        typeof callback==='function'?callback():callback
+        return img
+      }).catch(err=>{
+        return -1
+      })
 
-  }
-
-
-
-    
 }
