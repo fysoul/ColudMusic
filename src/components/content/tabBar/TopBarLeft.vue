@@ -105,7 +105,8 @@ export default {
       getMusic(index){
           this.loading=false
           detailed(this.parameter).then(res=>{
-              this.fuzzy={songs:[],albums:[]}
+            //   this.fuzzy={songs:[],albums:[]}
+              this.$refs.box.style.height='40rem'
               let data=res.songs
               this.$bus.$emit('getCount',res.songCount,index)
               res=this.getSearch(data)
@@ -127,7 +128,8 @@ export default {
 
           }).catch(err=>{
               this.loading=true
-              this.fuzzy={songs:[],albums:[]}
+            //   this.fuzzy={songs:[],albums:[]}
+              this.$refs.box.style.height='40rem'
               this.$bus.$emit('loading',true)
           })
 
@@ -140,6 +142,7 @@ export default {
          let key=e.keyCode
          let el=document.querySelectorAll('.fuzzy')
          if(key==13){
+             document.querySelector('.in').blur()
              this.searchMusic(-1)
          }else if(key==40){
             this.isIndex++  
@@ -170,7 +173,10 @@ export default {
         let name=this.$refs.text.value.trim()
         if(!this.loading||!name){
             //慢速操作
-            if(!name)this.fuzzy={songs:[],albums:[]}
+            if(!name){
+                this.$refs.box.style.height='40rem'
+            }
+            // this.fuzzy={songs:[],albums:[]}
             return
         }
         if(this.timer)clearTimeout(this.timer)
@@ -180,6 +186,7 @@ export default {
                     //因为是异步方法需要重新获取value值(快速操作)
                      if(!this.$refs.text.value.trim()){
                         this.fuzzy={songs:[],albums:[]}
+                        this.$refs.box.style.height='40rem'
                         return
                     }
                     if(!res.songs){
