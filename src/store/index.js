@@ -22,11 +22,9 @@ const state={
         'https://wallpaperm.cmcm.com/3a1c14c4e2704bed0c579b4da8e3f830.jpg',
         'https://pic.dmjnb.com/pic/b1092613257dacef1816bf50b4193c69',//雨天 女孩
         'https://img-baofun.zhhainiao.com/pcwallpaper_ugc/static/5e3909b2476425d904ce75a4f11b9dc8.jpg',
-         require('assets/img/backimg/loca.jpg'),//闭眼女孩
-        // 'https://wallpaperm.cmcm.com/802810e4d692c75751ddd3d0b6c16c9a.jpg',//闭眼女孩
+        'https://wallpaperm.cmcm.com/802810e4d692c75751ddd3d0b6c16c9a.jpg',//闭眼女孩
         'https://wallpaperm.cmcm.com/2fb9e283c60a92ea717e889135ca1df6.jpg',
         'https://wallpaperm.cmcm.com/a68d20e354e6d703b1f007dde85fdc7d.jpg',
-        
         'https://wallpaperm.cmcm.com/70de9ab37f342963b6b144f47b1a7140.jpg'
         
     ]

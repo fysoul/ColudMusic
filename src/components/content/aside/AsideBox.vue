@@ -52,10 +52,7 @@ export default {
     }
   },
   mounted(){
-
-      console.log(" document.querySelector('.authorImag')",document.querySelector('.authorImag'))
      document.querySelector('.authorImag').onerror=()=>{
-       console.log('图片出错了')
        document.querySelector('.authorImag').src=this.img
      }
   },

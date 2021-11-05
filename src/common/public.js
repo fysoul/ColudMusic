@@ -81,8 +81,7 @@ export function random(start=0,end,number){//number上一个不重复的数字
 
 
 //图片加载完在执行函数
-export function imgload(src,callback){//src可以为数组
-  
+export function imgload(src,callback,string){//src可以为数组,string为图片出错备用地址
   
     if(!src.length)return
     let len=src.length
@@ -97,7 +96,9 @@ export function imgload(src,callback){//src可以为数组
           reslove(arr[i])
         }
         arr[i].onerror=()=>{
-          reslove(-1)
+          // console.log('粗糙',string)
+          // arr[i].src=string
+          reslove(string)
         }
       })
     }
