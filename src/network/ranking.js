@@ -5,7 +5,7 @@ export function rank(){
         url:'toplist',
         
         params:{
-            proxy:`https:163.lpddr5.cn`
+            proxy:`http:121.196.226.246:84`
                 }
     }).then(res=>{
         let arr=[]
