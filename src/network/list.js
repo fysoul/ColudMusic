@@ -106,7 +106,6 @@ export function getIds(id){
         url:'playlist/detail',
         params:{
             id,
-            
         }
     }).then(res=>{
         let arr=res.playlist.trackIds.length

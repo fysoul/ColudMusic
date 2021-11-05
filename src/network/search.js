@@ -32,7 +32,6 @@ export function msg(ids){
         url:'song/detail',//详情搜索
         params:{
             ids,
-            
         }
     })
 }

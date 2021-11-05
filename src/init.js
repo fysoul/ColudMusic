@@ -40,6 +40,8 @@ export default async function createMount(call){
      
       console.log('初次请求数据花的时间',Date.now()-time)
 
+    }).catch(err=>{
+      createMount(call)
     })
 }
   
