@@ -1,7 +1,9 @@
 <template>
   <div class="AsideBox" :style="{height:aside_height,width:aside_width}">
     <div class="first">
-        <img  class="authorImag" src="https://c-ssl.duitang.com/uploads/blog/202012/28/20201228020625_a06e5.thumb.1000_0.jpeg" :style="authorImag">
+        <img  class="authorImag" 
+      src="" 
+      :style="authorImag">
     </div>
     
     <div class="second">
@@ -30,7 +32,7 @@ export default {
   },
   data () {
     return {
-
+       img:require('./../../../assets/img/aside/qyc.png')
     };
   },
   components:{
@@ -53,7 +55,8 @@ export default {
 
       console.log(" document.querySelector('.authorImag')",document.querySelector('.authorImag'))
      document.querySelector('.authorImag').onerror=()=>{
-       this.src=require('assets/img/aside/qyc.png')
+       console.log('图片出错了')
+       document.querySelector('.authorImag').src=this.img
      }
   },
 }
