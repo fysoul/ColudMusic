@@ -19,7 +19,7 @@ module.exports={
                 target: "https://163.lpddr5.cn", //目标地址，一般是指后台服务器地址
                 // changeOrigin: true, //是否跨域
                 pathRewrite: { // pathRewrite 的作用是把实际Request Url中的'/api'用""代替
-                    '^/api': "/" 
+                    '^/api': "https://163.lpddr5.cn" 
                 }
             }
         }
