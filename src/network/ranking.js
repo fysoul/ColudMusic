@@ -4,10 +4,11 @@ export function rank(){
     return instance({
         url:'toplist',
     }).then(res=>{
+        console.log('res',res)
         let arr=[]
         let reg=/俄|vip|乡村|法国|摇滚|民谣|南语/ig
 
-        console.log('res',res)
+        
         res.list.forEach((el,index) => {
             //  el.name.
             let obj={}
