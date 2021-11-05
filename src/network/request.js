@@ -15,6 +15,7 @@ export function instance(data){
     })
 
     instance.interceptors.response.use(res=>{
+        console.log('res啊啊啊啊啊啊啊啊',res)
             return res.data.result||res.data.songs||res.data
             
     },err=>{
