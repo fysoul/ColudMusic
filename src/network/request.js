@@ -3,7 +3,7 @@ import {message} from 'ant-design-vue';
 
 export function instance(data){ 
     const instance = axios.create({
-        baseURL:'https://163.lpddr5.cn',//其它人的https://autumnfish.cn
+        baseURL:'api',//其它人的https://autumnfish.cn
         // https://cloud-music-api-two.vercel.app
         timeout:5000
     })
