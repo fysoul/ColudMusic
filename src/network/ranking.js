@@ -3,8 +3,11 @@ import {instance} from './request'
 export function rank(){
     return instance({
         url:'toplist',
+        
+        params:{
+            proxy:`https:163.lpddr5.cn`
+                }
     }).then(res=>{
-        console.log('res',res)
         let arr=[]
         let reg=/俄|vip|乡村|法国|摇滚|民谣|南语/ig
 
