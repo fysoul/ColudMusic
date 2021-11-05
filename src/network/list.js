@@ -7,7 +7,8 @@ export function recommended(){
     return instance({
         url:'personalized',
         params:{
-            limit:30
+            limit:30,
+            
         }
     }).then(res=>{
         
@@ -44,6 +45,7 @@ export function recommended(){
 export function catlist(){
     return instance({
         url:'playlist/catlist',
+        
     })
 }
 
@@ -51,6 +53,7 @@ export function catlist(){
 export function hot(){
     return instance({
         url:'playlist/hot',
+        
     })
 }
 
@@ -62,7 +65,8 @@ export function net({limit,order,offset,cat}){
             limit,
             order,//new,hot(new会失效)
             offset,
-            cat
+            cat,
+            
             // cat:'古风'// " 华语 "、" 古风 " 、" 欧美 "、" 
         }
     }).then(res=>{
@@ -102,7 +106,7 @@ export function getIds(id){
         url:'playlist/detail',
         params:{
             id,
-            realIP:'116.25.146.177'
+            
         }
     }).then(res=>{
         let arr=res.playlist.trackIds.length

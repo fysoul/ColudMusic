@@ -5,7 +5,8 @@ export function search(musicName){
     return instance({
         url:'search/suggest',//模糊搜索
         params:{
-            keywords:musicName
+            keywords:musicName,
+            
         }
     })
 }
@@ -20,6 +21,7 @@ export function detailed({name,limit=5,offset=0}){
             offset:offset,//偏移量
 //1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
             type:1,
+            
         }
     })
 }
@@ -30,7 +32,7 @@ export function msg(ids){
         url:'song/detail',//详情搜索
         params:{
             ids,
-            realIP:'116.25.146.177'
+            
         }
     })
 }
@@ -41,7 +43,8 @@ export function lrc(id){
     return instance({
         url:'lyric',//搜索歌词
         params:{
-            id
+            id,
+            
         }
     })
 }
@@ -53,7 +56,8 @@ export function mv(id){
     return instance({
         url:'mv/url',//搜索mv
         params:{
-            id
+            id,
+            
         }
     }).then(res=>{
         let obj={}
